@@ -49,3 +49,39 @@ A comprehensive contact management system that provides an intuitive interface f
 1. **Clone the Repository**:
    ```bash
    git clone https://github.com/your-username/smart-contact-manager.git
+
+2. **Navigate to Project Directory**:
+    ```bash
+   cd smart-contact-manager
+3. **Set Up the Database**:
+   Configure MySQL database settings in application.properties or application.yml.
+   Run the database migrations (if applicable).
+
+4. **Build the Project**:
+   ```bash
+   ./mvnw clean install
+5. **Run the Application**:
+   ```bash
+   ./mvnw spring-boot:run
+
+Usage
+1. Access the Application:
+  Open a web browser and go to http://localhost:8080.
+
+2. Authentication:
+  Sign up with email and password or use social login (Google or GitHub).
+  Verify your account using the email verification link sent to your email address.
+
+3. Manage Contacts:
+  Add new contacts with profile pictures.
+  View, update, delete, and search for contacts.
+  Export contact data to PDF or Excel.
+  Mark contacts as favorites and toggle between dark and light themes.
+
+4. Email Functionality:
+  Compose and send emails with text and attachments.
+  Receive and manage incoming emails.
+
+5. User Preferences:
+  Toggle between dark and light themes.
+  View and edit your personal details.
