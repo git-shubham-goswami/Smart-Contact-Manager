@@ -64,24 +64,62 @@ A comprehensive contact management system that provides an intuitive interface f
    ```bash
    ./mvnw spring-boot:run
 
-Usage
-1. Access the Application:
-  Open a web browser and go to http://localhost:8080.
+## Usage
 
-2. Authentication:
-  Sign up with email and password or use social login (Google or GitHub).
-  Verify your account using the email verification link sent to your email address.
+1. **Access the Application**:
+   - Open a web browser and go to `http://localhost:8080`.
 
-3. Manage Contacts:
-  Add new contacts with profile pictures.
-  View, update, delete, and search for contacts.
-  Export contact data to PDF or Excel.
-  Mark contacts as favorites and toggle between dark and light themes.
+2. **Authentication**:
+   - Sign up with email and password or use social login (Google or GitHub).
+   - Verify your account using the email verification link sent to your email address.
 
-4. Email Functionality:
-  Compose and send emails with text and attachments.
-  Receive and manage incoming emails.
+3. **Manage Contacts**:
+   - Add new contacts with profile pictures.
+   - View all contacts with pagination.
+   - Search for contacts by name or other attributes.
+   - View, update, or delete contact details.
+   - Mark contacts as favorites.
+   - Export contact data to PDF or Excel.
 
-5. User Preferences:
-  Toggle between dark and light themes.
-  View and edit your personal details.
+4. **Email Functionality**:
+   - Compose and send emails with text and attachments.
+   - Receive and manage incoming emails.
+
+5. **User Preferences**:
+   - Toggle between dark and light themes.
+   - View and edit your personal details.
+
+## Contributing
+
+We welcome contributions to the Smart Contact Manager project! If you'd like to contribute, please follow these guidelines:
+
+1. **Fork the Repository**:
+   - Click on the "Fork" button at the top right of the repository page on GitHub to create your own fork.
+
+2. **Create a Feature Branch**:
+   - Create a new branch for your feature or fix:
+     ```bash
+     git checkout -b feature/your-feature-name
+     ```
+
+3. **Commit Your Changes**:
+   - Make your changes and commit them with descriptive messages:
+     ```bash
+     git commit -am 'Add new feature or fix'
+     ```
+
+4. **Push to the Branch**:
+   - Push your changes to your fork:
+     ```bash
+     git push origin feature/your-feature-name
+     ```
+
+5. **Open a Pull Request**:
+   - Go to the original repository and open a pull request from your fork's branch to the main repository's branch.
+
+## Contact
+
+For any questions or feedback, please contact:
+
+- **Email**: [shubhamdevverse@gmail.com](mailto:shubhamdevverse@gmail.com)
+- **GitHub**: [git-shubham-goswami](https://github.com/git-shubham-goswami)
