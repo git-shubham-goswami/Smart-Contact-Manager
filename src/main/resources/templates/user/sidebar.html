@@ -1,11 +1,17 @@
     <aside data-th-fragment="sidebar"
            id="logo-sidebar" 
            class="fixed top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0" aria-label="Sidebar">
-        <div class="pt-20 h-full px-3 py-4 overflow-y-auto bg-gray-50 dark:bg-gray-800">
+        <div class="pt-5 h-full px-3 py-2 overflow-y-auto bg-gray-50 dark:bg-gray-800">
            <a th:src="@{'/user/profile'}" class="flex items-center ps-2.5 mb-5">
-              <img th:src="@{'/images/logo.png'}" class="h-6 me-3 sm:h-7" alt="Flowbite Logo" />
-              <span class="self-center text-xl font-semibold whitespace-nowrap dark:text-white">Welcome to SCM</span>
-           </a>
+              <img 
+                  onerror="this.onerror=null; this.src='https://img.freepik.com/free-vector/blue-circle-with-white-user_78370-4707.jpg?w=1060&t=st=1725350801~exp=1725351401~hmac=d3c1f656d05ab25d5d4184c9c2c932fc1788527ac92e55ea135812a6cbfdf90d'"
+                  th:src="@{${loggedInUser.profilePic}}" 
+                  class="h-16 me-3 sm:h-24 shadow-md rounded-full" alt="Flowbite Logo" />
+              <span data-th-text="${loggedInUser.name}" class="text-white text-xl font-semibold"> </span>
+         
+            </a>
+          
+        
            <ul class="space-y-2 font-medium">
               <li>
                  <a data-th-href="@{'/user/dashboard'}" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">

@@ -10,10 +10,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.scm.entities.Contact;
 import com.scm.entities.User;
 import com.scm.helper.Helper;
+import com.scm.services.ContactService;
 import com.scm.services.UserService;
 
+import java.util.*;
 import java.security.*;
 
 @Controller
@@ -25,15 +28,32 @@ public class UserController {
     @Autowired
     private UserService userService;
 
+    @Autowired
+    private ContactService contactService;
+
    
 
-    //user dashboard
+    // User dashboard
     @GetMapping("/dashboard")
-    public String userDashboard(){
+    public String userDashboard(Model model, Authentication authentication) {
+        // Get logged-in user's email
+        String email = Helper.getEmailOfLoggedInUser(authentication);
 
+        // Fetch user details
+        User user = userService.getUserByEmail(email);
+
+        // Fetch contact statistics and recent contacts
+        long totalContacts = contactService.getByUser(user, 0, Integer.MAX_VALUE, "name", "asc").getTotalElements();
+        List<Contact> recentContacts = contactService.getByUser(user, 0, 5, "createdDate", "desc").getContent();
+
+        // Add attributes to the model
+        model.addAttribute("loggedInUser", user);
+        model.addAttribute("totalContacts", totalContacts);
+        model.addAttribute("recentContacts", recentContacts);
 
         return "user/dashboard";
     }
+
 
     //user profile
     @GetMapping("/profile")

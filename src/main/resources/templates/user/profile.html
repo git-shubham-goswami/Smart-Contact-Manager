@@ -3,8 +3,10 @@
       th:replace="~{base :: parent(~{::#content}, ~{::title})}"> 
 <head>
   <title data-th-text="${loggedInUser.name}+' | SCM' ">Profile</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.10.3/dist/cdn.min.js" defer></script>
 </head>
-<body >
+<body class="bg-gray-100 dark:bg-gray-900">
   <div id="content">
 
     <!-- if user is logged in : sidebar -->
@@ -12,10 +14,32 @@
        <div data-th-replace="~{user/sidebar :: sidebar}">    
     </div>
 
-  
     <div class="sm:pl-64 pt-18" style="height: 1000px">
         <div class="flex justify-center flex-col items-center">
-          <h1 class="text-2xl">Welcome to profile page</h1>
+          <h1 class="text-2xl text-gray-800 dark:text-white mb-6">Welcome to profile page</h1>
+
+          <!-- Profile Card Start -->
+          <div x-data="{ darkMode: false }" class="p-4">
+            
+            <!-- User Profile Card -->
+            <div class="max-w-2xl w-full bg-white dark:bg-gray-800 shadow-lg rounded-lg overflow-hidden flex flex-col items-center p-6">
+                <img class="h-32 w-32 object-cover rounded-full border-4 border-gray-300 dark:border-gray-700" 
+                     th:src="${loggedInUser.profilePic != null ? loggedInUser.profilePic : 'https://via.placeholder.com/150'}" 
+                     alt="Profile Picture">
+                <div class="mt-6 text-center">
+                    <div class="text-2xl font-semibold text-gray-900 dark:text-white" 
+                         th:text="${loggedInUser.name}">John Doe</div>
+                    <p class="text-gray-600 dark:text-gray-400 mt-2" th:text="${loggedInUser.email}">john.doe@example.com</p>
+                    <p class="text-gray-600 dark:text-gray-400 mt-1" th:text="${loggedInUser.phoneNumber}">+1234567890</p>
+                    <p class="text-gray-600 dark:text-gray-400 mt-4 px-4" th:text="${loggedInUser.about}">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                    <div class="mt-4">
+                        <span class="inline-block bg-blue-500 text-white text-xs px-3 py-1 rounded-full uppercase font-semibold tracking-wide"
+                              th:text="${#strings.arrayJoin(loggedInUser.roleList.toArray(), ', ')}">Admin</span>
+                    </div>
+                </div>
+            </div>
+          </div>
+          <!-- Profile Card End -->
 
         </div>
     </div>

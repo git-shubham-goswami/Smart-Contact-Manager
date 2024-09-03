@@ -1,25 +1,49 @@
 <!DOCTYPE html>
-<html lang="en" 
-      th:replace="~{base :: parent(~{::#content}, ~{::title})}"> 
+<html lang="en" th:replace="~{base :: parent(~{::#content}, ~{::title})}">
 <head>
-  <title data-th-text="${loggedInUser.name}+' | Dashboard' ">Profile</title>
+    <title th:text="${loggedInUser.name} + ' | Dashboard'">Dashboard</title>
+    <!-- Tailwind CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.0.24/dist/tailwind.min.css" rel="stylesheet">
 </head>
-<body >
-  <div id="content">
+<body class="dark:bg-gray-900 dark:text-gray-100">
+    <div id="content">
+        <!-- if user is logged in : sidebar -->
+        <div th:if="${loggedInUser}"></div>
+        <div data-th-replace="~{user/sidebar :: sidebar}"></div>
 
-    <!-- if user is logged in : sidebar -->
-    <div th:if="${loggedInUser}"></div>
-       <div data-th-replace="~{user/sidebar :: sidebar}">    
-    </div>
+        <div class="sm:pl-64 pt-18">
+            <div class="container mx-auto px-4">
+                <!-- Dashboard Header -->
+                <div class="flex flex-col items-center mb-8">
+                    <h1 class="text-3xl font-bold mb-4">Welcome to Your Dashboard, <span th:text="${loggedInUser.name}"></span></h1>
+                </div>
 
-  
-    <div class="sm:pl-64 pt-18" style="height: 1000px">
-        <div class="flex justify-center flex-col items-center">
-          <h1 class="text-2xl">Welcome to Dashboard page</h1>
+                <!-- User Information -->
+                <div class="p-6 rounded-lg shadow-lg mb-6 dark:bg-gray-800 dark:text-gray-100">
+                    <h2 class="text-xl font-semibold mb-4">User Information</h2>
+                    <p><strong>Name:</strong> <span th:text="${loggedInUser.name}"></span></p>
+                    <p><strong>Email:</strong> <span th:text="${loggedInUser.email}"></span></p>
+                    <p><strong>Phone:</strong> <span th:text="${loggedInUser.phoneNumber}"></span></p>
+                </div>
 
+                <!-- Statistics -->
+                <div class=" p-6 rounded-lg shadow-lg mb-6 dark:bg-gray-800 dark:text-gray-100">
+                    <h2 class="text-xl font-semibold mb-4">Statistics</h2>
+                    <p><strong>Total Contacts:</strong> <span th:text="${totalContacts}"></span></p>
+                </div>
+
+                <!-- Recent Contacts -->
+                <div class=" p-6 rounded-lg shadow-lg dark:bg-gray-800 dark:text-gray-100">
+                    <h2 class="text-xl font-semibold mb-4">Recent Contacts</h2>
+                    <ul>
+                        <li th:each="contact : ${recentContacts}" class="border-b border-gray-700 py-2 dark:border-gray-700">
+                            <p><strong>Name:</strong> <span th:text="${contact.name}"></span></p>
+                            <p><strong>Email:</strong> <span th:text="${contact.email}"></span></p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
         </div>
     </div>
-
-  </div>
 </body>
 </html>
